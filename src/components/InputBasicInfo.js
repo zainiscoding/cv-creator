@@ -9,24 +9,12 @@ class InputBasicInfo extends Component {
             phoneNumber: '',
             website: '',
         };
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(e) {
-        const target = e.target;
-        const value = target.value;
-        const name = target.id;
-
-        this.setState({
-            [name]: value,
-        });
-        console.log(this.state);
     }
 
     render() {
         const info = this.state;
         return (
-            <div id='BasicInputsContainer' onChange={this.handleChange}>
+            <div id='BasicInputsContainer' onChange={this.props.handleChange}>
                 <h2>Basic Information</h2>
                 <label htmlFor='nameInput'>Name</label>
                 <input
@@ -34,7 +22,7 @@ class InputBasicInfo extends Component {
                     type='text'
                     id='name'
                     className='input'
-                    value={info.name}
+                    value={this.props.name}
                 ></input>
                 <label htmlFor='email'>Email address</label>
                 <input
@@ -42,7 +30,7 @@ class InputBasicInfo extends Component {
                     type='email'
                     id='email'
                     className='input'
-                    value={info.email}
+                    value={this.props.email}
                 ></input>
                 <label htmlFor='phoneNumber'>Phone number</label>
                 <input
@@ -50,7 +38,7 @@ class InputBasicInfo extends Component {
                     type='number'
                     id='phoneNumber'
                     className='input'
-                    value={info.phoneNumber}
+                    value={this.props.phoneNumber}
                 ></input>
                 <label htmlFor='website'>Website</label>
                 <input
@@ -58,7 +46,7 @@ class InputBasicInfo extends Component {
                     type='url'
                     id='website'
                     className='input'
-                    value={info.website}
+                    value={this.props.website}
                 ></input>
             </div>
         );

@@ -10,7 +10,10 @@ class InputsContainer extends Component {
     render() {
         return (
             <div id='InputsContainer'>
-                <InputBasicInfo />
+                <InputBasicInfo
+                    basics={this.props.basics}
+                    handleChange={this.props.handleChange}
+                />
                 <InputEducation />
                 <div className='submitBtnContainer'>
                     <input type='submit' value='Submit'></input>
