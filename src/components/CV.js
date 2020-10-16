@@ -8,7 +8,9 @@ class CV extends Component {
         return (
             <div id='CV'>
                 <div id='basicInfoContainer'>
-                    <div id='name'>{this.props.basics}</div>
+                    <div id='name'>
+                        <p>{this.props.info.BasicInputsContainer.name}</p>
+                    </div>
                 </div>
             </div>
         );
