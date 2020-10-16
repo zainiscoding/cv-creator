@@ -37,13 +37,14 @@ class InputBasicInfo extends Component {
                     id='website'
                     className='input'
                 ></input>
-                <div className='submitBtnContainer'>
+                {/* For submit button on each input section, use the code below. For safe keeping! */}
+                {/* <div className='submitBtnContainer'>
                     <input
                         type='submit'
                         onClick={this.props.submitChange}
                         value='Submit'
                     ></input>
-                </div>
+                </div> */}
             </div>
         );
     }

@@ -1,39 +1,64 @@
 import React, { Component } from 'react';
 import InputsContainer from './components/InputsContainer';
-import CV from './components/CV';
+import DisplayCV from './components/DisplayCV';
 
-//Make each section an array? This shit must render an array, so everythign has to be in an array
-//Wait... make each section an object?? Then convert to array and render??!?!?
-//Try with leave focus instead of onChange?
-//When leave focus, add the current 'input' to an array
-//Then when hit submit, it clears the array and sets it to state
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             BasicInputsContainer: {},
+            EducationInputsContainer: {},
+            ExperienceInputsContainer: {},
         };
         this.submitChange = this.submitChange.bind(this);
     }
 
     submitChange = (e) => {
         e.preventDefault();
-        const target = e.target;
-        const value = target.value;
-        const parent = target.parentNode.id;
-        const name = target.id;
-        const allElements = Array.from(target.parentNode.parentNode.children);
+        const allInputElements = Array.from(
+            e.target.parentNode.parentNode.children
+        );
+
+        //Pushes all the nodes of className "input" into the array allInputs
+        //This is super long winded - 3 loops(!?) - but I'm not sure how else I can really extract these nodes that I want. Any suggestions?
+        const allInputElementsChildren = [];
+        const allInputElementsChildrenNodes = [];
         const allInputs = [];
-        allElements.forEach((element) => {
-            if (element.className == 'input') {
-                allInputs.push(element);
+
+        allInputElements.forEach((element) => {
+            allInputElementsChildren.push(element.children);
+        });
+
+        console.log(allInputElements);
+
+        allInputElementsChildren.forEach((child) => {
+            for (let i = 0; i < child.length; i++) {
+                allInputElementsChildrenNodes.push(child[i]);
             }
         });
+
+        allInputElementsChildrenNodes.forEach((node) => {
+            if (node.className === 'input') {
+                allInputs.push(node);
+            }
+        });
+
+        //I'd like to get this to work rather than using the function below.
+        // allInputs.forEach((input) =>
+        //     this.setState((state) => {
+        //         state[input.parentNode.id][input.id] = input.value;
+        //     })
+        // );
+
+        //Add the values of the input to their respective state objects
+        //This works, but acts weird when you hit submit again...
         allInputs.forEach((input) =>
             this.setState((state) => {
-                state[input.parentNode.id][input.id] = input.value;
+                return (state[input.parentNode.id][input.id] = input.value);
             })
         );
+        console.log(allInputs);
+
         console.log(this.state);
     };
 
@@ -41,17 +66,9 @@ class App extends Component {
         return (
             <div id='App'>
                 <div id='Inputs'>
-                    <InputsContainer
-                        info={
-                            (this.state.BasicInputsContainer.name,
-                            this.state.BasicInputsContainer.email,
-                            this.state.BasicInputsContainer.phoneNumber,
-                            this.state.BasicInputsContainer.website)
-                        }
-                        submitChange={this.submitChange}
-                    />
+                    <InputsContainer submitChange={this.submitChange} />
                 </div>
-                <CV info={this.state} />
+                <DisplayCV info={this.state} />
             </div>
         );
     }

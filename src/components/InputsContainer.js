@@ -10,11 +10,15 @@ class InputsContainer extends Component {
     render() {
         return (
             <div id='InputsContainer'>
-                <InputBasicInfo
-                    info={this.props.BasicsInputsContainer}
-                    submitChange={this.props.submitChange}
-                />
+                <InputBasicInfo info={this.props.BasicsInputsContainer} />
                 <InputEducation />
+                <div className='submitBtnContainer'>
+                    <input
+                        type='submit'
+                        onClick={this.props.submitChange}
+                        value='Submit'
+                    ></input>
+                </div>
             </div>
         );
     }

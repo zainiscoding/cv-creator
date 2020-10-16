@@ -15,7 +15,8 @@ class InputEducation extends Component {
                 <input
                     name='education'
                     type='text'
-                    id='institutionNameInput'
+                    id='institutionName'
+                    className='input'
                 ></input>
             </div>
         );
