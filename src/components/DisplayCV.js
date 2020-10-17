@@ -9,23 +9,27 @@ class DisplayCV extends Component {
             <div id='CV'>
                 <div id='basicInfoContainer'>
                     <div id='name'>
-                        <p>{this.props.info.BasicInputsContainer.name}</p>
+                        <p>{this.props.info.basicInputsContainer.name}</p>
                     </div>
                     <div id='email'>
-                        <p>
-                            Email: {this.props.info.BasicInputsContainer.email}
-                        </p>
+                        <p>{this.props.info.basicInputsContainer.email}</p>
                     </div>
                     <div id='phoneNumber'>
                         <p>
-                            Cell:{' '}
-                            {this.props.info.BasicInputsContainer.phoneNumber}
+                            {this.props.info.basicInputsContainer.phoneNumber}
                         </p>
                     </div>
                     <div id='website'>
+                        <p>{this.props.info.basicInputsContainer.website}</p>
+                    </div>
+                </div>
+                <div id='educationInfoContainer'>
+                    <div id='educationname'>
                         <p>
-                            Website:{' '}
-                            {this.props.info.BasicInputsContainer.website}
+                            {
+                                this.props.info.educationInputsContainer
+                                    .institutionName
+                            }
                         </p>
                     </div>
                 </div>

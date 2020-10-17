@@ -6,15 +6,24 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            BasicInputsContainer: {},
-            EducationInputsContainer: {},
-            ExperienceInputsContainer: {},
+            editing: true,
+            basicInputsContainer: {},
+            educationInputsContainer: {},
+            workExperienceInputsContainer: {},
         };
         this.submitChange = this.submitChange.bind(this);
+        this.changeEditingState = this.changeEditingState.bind(this);
     }
+
+    changeEditingState = () => {
+        if (this.state.editing === true) {
+            this.setState({ editing: false });
+        } else this.setState({ editing: true });
+    };
 
     submitChange = (e) => {
         e.preventDefault();
+
         const allInputElements = Array.from(
             e.target.parentNode.parentNode.children
         );
@@ -52,21 +61,44 @@ class App extends Component {
 
         //Add the values of the input to their respective state objects
         //This works, but acts weird when you hit submit again...
-        allInputs.forEach((input) =>
-            this.setState((state) => {
-                return (state[input.parentNode.id][input.id] = input.value);
-            })
-        );
-        console.log(allInputs);
+        allInputs.forEach((input) => {
+            if (input.value.length > 0) {
+                this.setState((state) => {
+                    if (input.name === 'education') {
+                        const educationInputs = [];
+                        educationInputs.push(input.value);
+                        return (state.educationInputsContainer.newEducation = [
+                            ...educationInputs,
+                        ].join(' '));
+                    } else if (input.title !== 'Name') {
+                        return (state[input.parentNode.id][input.id] =
+                            input.title + ': ' + input.value);
+                    } else {
+                        return (state[input.parentNode.id][input.id] =
+                            input.value);
+                    }
+                });
+            }
+        });
 
+        //Close the CV editor if you push the "Submit" button
+        if (e.target.id === 'submitCvBtn') {
+            this.setState({ editing: false });
+        }
         console.log(this.state);
     };
 
     render() {
+        const editing = this.state.editing;
         return (
             <div id='App'>
                 <div id='Inputs'>
-                    <InputsContainer submitChange={this.submitChange} />
+                    {editing === true && (
+                        <InputsContainer submitChange={this.submitChange} />
+                    )}
+                    {editing === false && (
+                        <button onClick={this.changeEditingState}>Edit</button>
+                    )}
                 </div>
                 <DisplayCV info={this.state} />
             </div>

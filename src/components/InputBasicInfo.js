@@ -7,7 +7,7 @@ class InputBasicInfo extends Component {
 
     render() {
         return (
-            <div id='BasicInputsContainer'>
+            <div id='basicInputsContainer'>
                 <h2>Basic Information</h2>
                 <label htmlFor='nameInput'>Name</label>
                 <input
@@ -15,6 +15,7 @@ class InputBasicInfo extends Component {
                     type='text'
                     id='name'
                     className='input'
+                    title='Name'
                 ></input>
                 <label htmlFor='email'>Email address</label>
                 <input
@@ -22,6 +23,7 @@ class InputBasicInfo extends Component {
                     type='email'
                     id='email'
                     className='input'
+                    title='Email'
                 ></input>
                 <label htmlFor='phoneNumber'>Phone number</label>
                 <input
@@ -29,6 +31,7 @@ class InputBasicInfo extends Component {
                     type='number'
                     id='phoneNumber'
                     className='input'
+                    title='Phone'
                 ></input>
                 <label htmlFor='website'>Website</label>
                 <input
@@ -36,6 +39,7 @@ class InputBasicInfo extends Component {
                     type='url'
                     id='website'
                     className='input'
+                    title='Website'
                 ></input>
                 {/* For submit button on each input section, use the code below. For safe keeping! */}
                 {/* <div className='submitBtnContainer'>

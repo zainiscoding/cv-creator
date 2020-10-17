@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputBasicInfo from './InputBasicInfo';
 import InputEducation from './InputEducation';
+import InputWorkExperience from './InputWorkExperience';
 
 class InputsContainer extends Component {
     constructor(props) {
@@ -9,14 +10,16 @@ class InputsContainer extends Component {
 
     render() {
         return (
-            <div id='InputsContainer'>
+            <div id='inputsContainer'>
                 <InputBasicInfo info={this.props.BasicsInputsContainer} />
-                <InputEducation />
+                <InputEducation submitChange={this.props.submitChange} />
+                <InputWorkExperience submitChange={this.props.submitChange} />
                 <div className='submitBtnContainer'>
                     <input
                         type='submit'
-                        onClick={this.props.submitChange}
                         value='Submit'
+                        id='submitCvBtn'
+                        onClick={this.props.submitChange}
                     ></input>
                 </div>
             </div>

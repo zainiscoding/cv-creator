@@ -4,20 +4,78 @@ import InputsContainer from './InputsContainer';
 class InputEducation extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            addingEducation: false,
+        };
+        this.changeAddEducationState = this.changeAddEducationState.bind(this);
     }
+
+    changeAddEducationState = (e) => {
+        if (this.state.addingEducation === true) {
+            this.props.submitChange(e);
+        }
+
+        if (this.state.addingEducation === true) {
+            this.setState({ addingEducation: false });
+        } else this.setState({ addingEducation: true });
+    };
 
     render() {
         return (
-            <div id='EducationInputsContainer'>
+            <div id='educationInputsContainer'>
                 <h2>Education</h2>
-                <label htmlFor='institutionNameInput'>Institution name</label>
-                <input
-                    name='education'
-                    type='text'
-                    id='institutionName'
-                    className='input'
-                ></input>
+                {this.state.addingEducation === true && (
+                    <>
+                        <label htmlFor='institutionNameInput'>
+                            Institution name
+                        </label>
+                        <input
+                            name='education'
+                            type='text'
+                            id='institutionName'
+                            className='input'
+                            title='Name of Institution'
+                        ></input>
+                        <label htmlFor='courseName'>Course name</label>
+                        <input
+                            name='education'
+                            type='text'
+                            id='courseName'
+                            className='input'
+                            title='Course name'
+                        ></input>
+                        <label htmlFor='startDate'>Start date</label>
+                        <input
+                            name='education'
+                            type='date'
+                            id='startDate'
+                            className='input'
+                            title='Start date'
+                        ></input>
+                        <label htmlFor='endDate'>End date</label>
+                        <input
+                            name='education'
+                            type='date'
+                            id='endDate'
+                            className='input'
+                            title='End date'
+                        ></input>
+                        <button
+                            id='submitEducationButton'
+                            onClick={this.changeAddEducationState}
+                        >
+                            Submit entry
+                        </button>
+                    </>
+                )}
+                {this.state.addingEducation === false && (
+                    <button
+                        id='addEducationButton'
+                        onClick={this.changeAddEducationState}
+                    >
+                        Add entry
+                    </button>
+                )}
             </div>
         );
     }
