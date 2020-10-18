@@ -7,8 +7,9 @@ class App extends Component {
         super(props);
         this.state = {
             editing: true,
+            educationCounter: 0,
             basicInputsContainer: {},
-            educationInputsContainer: {},
+            educationInputsContainer: [],
             workExperienceInputsContainer: {},
         };
         this.submitChange = this.submitChange.bind(this);
@@ -28,8 +29,10 @@ class App extends Component {
             e.target.parentNode.parentNode.children
         );
 
+        console.log(allInputElements);
         //Pushes all the nodes of className "input" into the array allInputs
         //This is super long winded - 3 loops(!?) - but I'm not sure how else I can really extract these nodes that I want. Any suggestions?
+        //A document.querySelector kind of deal would be neat!
         const allInputElementsChildren = [];
         const allInputElementsChildrenNodes = [];
         const allInputs = [];
@@ -37,8 +40,6 @@ class App extends Component {
         allInputElements.forEach((element) => {
             allInputElementsChildren.push(element.children);
         });
-
-        console.log(allInputElements);
 
         allInputElementsChildren.forEach((child) => {
             for (let i = 0; i < child.length; i++) {
@@ -52,24 +53,33 @@ class App extends Component {
             }
         });
 
-        //I'd like to get this to work rather than using the function below.
-        // allInputs.forEach((input) =>
-        //     this.setState((state) => {
-        //         state[input.parentNode.id][input.id] = input.value;
-        //     })
-        // );
+        //Gathers the information from individual educations and pushes them into an array
+        const educationInputs = [];
+        allInputs.forEach((input) => {
+            if (input.name === 'education') {
+                educationInputs.push(input.title + ': ' + input.value);
+            }
+        });
+
+        //Increase the education counter when submitting an individual education
+        if (e.target.id === 'submitEducationButton') {
+            this.setState((state) => {
+                return { educationCounter: state.educationCounter + 1 };
+            });
+        }
+        console.log(allInputElements);
 
         //Add the values of the input to their respective state objects
         //This works, but acts weird when you hit submit again...
         allInputs.forEach((input) => {
             if (input.value.length > 0) {
                 this.setState((state) => {
+                    //Creates a new education object within educationInputsCounter, with educationCounter as the object key
                     if (input.name === 'education') {
-                        const educationInputs = [];
-                        educationInputs.push(input.value);
-                        return (state.educationInputsContainer.newEducation = [
-                            ...educationInputs,
-                        ].join(' '));
+                        return (state.educationInputsContainer[
+                            state.educationCounter
+                        ] = [...educationInputs]);
+                        //Prevents the applicant's name from displaying as, for example, "Name: John Smith"
                     } else if (input.title !== 'Name') {
                         return (state[input.parentNode.id][input.id] =
                             input.title + ': ' + input.value);

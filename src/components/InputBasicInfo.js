@@ -41,14 +41,6 @@ class InputBasicInfo extends Component {
                     className='input'
                     title='Website'
                 ></input>
-                {/* For submit button on each input section, use the code below. For safe keeping! */}
-                {/* <div className='submitBtnContainer'>
-                    <input
-                        type='submit'
-                        onClick={this.props.submitChange}
-                        value='Submit'
-                    ></input>
-                </div> */}
             </div>
         );
     }

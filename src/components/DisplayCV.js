@@ -24,14 +24,20 @@ class DisplayCV extends Component {
                     </div>
                 </div>
                 <div id='educationInfoContainer'>
-                    <div id='educationname'>
-                        <p>
-                            {
-                                this.props.info.educationInputsContainer
-                                    .institutionName
-                            }
-                        </p>
-                    </div>
+                    <h3>Education</h3>
+                    {this.props.info.educationInputsContainer.map(
+                        (education) => {
+                            return education.map((detail) => {
+                                if (detail.charAt(detail.length - 1) !== ' ') {
+                                    return (
+                                        <div>
+                                            <p>{detail}</p>
+                                        </div>
+                                    );
+                                }
+                            });
+                        }
+                    )}
                 </div>
             </div>
         );
