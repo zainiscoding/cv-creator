@@ -14,6 +14,7 @@ class InputsContainer extends Component {
                 <InputBasicInfo info={this.props.BasicsInputsContainer} />
                 <InputEducation
                     submitChange={this.props.submitChange}
+                    removeStateItem={this.props.removeStateItem}
                     info={this.props.info}
                 />
                 <InputWorkExperience submitChange={this.props.submitChange} />

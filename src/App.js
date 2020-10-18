@@ -7,19 +7,39 @@ class App extends Component {
         super(props);
         this.state = {
             editing: true,
-            educationCounter: 0,
+            educationCounter: -1,
             basicInputsContainer: {},
             educationInputsContainer: [],
-            workExperienceInputsContainer: {},
+            workExperienceInputsContainer: [],
         };
         this.submitChange = this.submitChange.bind(this);
         this.changeEditingState = this.changeEditingState.bind(this);
+        this.removeStateItem = this.removeStateItem.bind(this);
     }
 
     changeEditingState = () => {
         if (this.state.editing === true) {
             this.setState({ editing: false });
         } else this.setState({ editing: true });
+    };
+
+    removeStateItem = (e) => {
+        e.preventDefault();
+
+        const allInputElements = Array.from(e.target.parentNode.children);
+
+        const targetState = [e.target.parentNode.parentNode.parentNode.id];
+        this.state[targetState].forEach((stateItem) => {
+            this.setState((state) => {
+                if (stateItem[0] == allInputElements[1].textContent) {
+                    return state[targetState].splice(
+                        state[targetState].indexOf([stateItem]),
+                        1
+                    );
+                }
+            });
+        });
+        console.log(this.state);
     };
 
     submitChange = (e) => {
@@ -107,6 +127,7 @@ class App extends Component {
                     {editing === true && (
                         <InputsContainer
                             submitChange={this.submitChange}
+                            removeStateItem={this.removeStateItem}
                             info={info}
                         />
                     )}

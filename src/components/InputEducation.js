@@ -81,7 +81,15 @@ class InputEducation extends Component {
                         (education) => {
                             return (
                                 <div>
-                                    <button>Delete</button>
+                                    <button
+                                        id={
+                                            'deleteEducation' +
+                                            this.props.info.educationCounter
+                                        }
+                                        onClick={this.props.removeStateItem}
+                                    >
+                                        Delete
+                                    </button>
                                     {education.map((detail) => {
                                         if (
                                             detail.charAt(detail.length - 1) !==
