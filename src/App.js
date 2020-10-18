@@ -100,17 +100,21 @@ class App extends Component {
 
     render() {
         const editing = this.state.editing;
+        const info = this.state;
         return (
             <div id='App'>
                 <div id='Inputs'>
                     {editing === true && (
-                        <InputsContainer submitChange={this.submitChange} />
+                        <InputsContainer
+                            submitChange={this.submitChange}
+                            info={info}
+                        />
                     )}
                     {editing === false && (
                         <button onClick={this.changeEditingState}>Edit</button>
                     )}
                 </div>
-                <DisplayCV info={this.state} />
+                <DisplayCV info={info} />
             </div>
         );
     }

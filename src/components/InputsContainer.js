@@ -12,7 +12,10 @@ class InputsContainer extends Component {
         return (
             <div id='inputsContainer'>
                 <InputBasicInfo info={this.props.BasicsInputsContainer} />
-                <InputEducation submitChange={this.props.submitChange} />
+                <InputEducation
+                    submitChange={this.props.submitChange}
+                    info={this.props.info}
+                />
                 <InputWorkExperience submitChange={this.props.submitChange} />
                 <div className='submitBtnContainer'>
                     <input

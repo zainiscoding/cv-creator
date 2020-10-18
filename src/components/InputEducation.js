@@ -76,6 +76,29 @@ class InputEducation extends Component {
                         Add entry
                     </button>
                 )}
+                <div id='educationInfoContainer'>
+                    {this.props.info.educationInputsContainer.map(
+                        (education) => {
+                            return (
+                                <div>
+                                    <button>Delete</button>
+                                    {education.map((detail) => {
+                                        if (
+                                            detail.charAt(detail.length - 1) !==
+                                            ' '
+                                        ) {
+                                            return (
+                                                <div key={detail}>
+                                                    <p>{detail}</p>
+                                                </div>
+                                            );
+                                        }
+                                    })}
+                                </div>
+                            );
+                        }
+                    )}
+                </div>
             </div>
         );
     }
