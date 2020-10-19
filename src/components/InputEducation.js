@@ -60,12 +60,14 @@ class InputEducation extends Component {
                             className='input'
                             title='End date'
                         ></input>
-                        <button
-                            id='submitEducationButton'
-                            onClick={this.changeAddEducationState}
-                        >
-                            Submit entry
-                        </button>
+                        <div id='submitEducationbtnContainer'>
+                            <button
+                                id='submitEducationButton'
+                                onClick={this.changeAddEducationState}
+                            >
+                                Submit entry
+                            </button>
+                        </div>
                     </>
                 )}
                 {this.state.addingEducation === false && (

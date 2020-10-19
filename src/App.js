@@ -57,17 +57,17 @@ class App extends Component {
         const allInputElementsChildrenNodes = [];
         const allInputs = [];
 
-        allInputElements.forEach((element) => {
-            allInputElementsChildren.push(element.children);
-        });
+        // allInputElements.forEach((element) => {
+        //     allInputElementsChildren.push(element.children);
+        // });
 
-        allInputElementsChildren.forEach((child) => {
-            for (let i = 0; i < child.length; i++) {
-                allInputElementsChildrenNodes.push(child[i]);
-            }
-        });
+        // allInputElementsChildren.forEach((child) => {
+        //     for (let i = 0; i < child.length; i++) {
+        //         allInputElementsChildrenNodes.push(child[i]);
+        //     }
+        // });
 
-        allInputElementsChildrenNodes.forEach((node) => {
+        allInputElements.forEach((node) => {
             if (node.className === 'input') {
                 allInputs.push(node);
             }

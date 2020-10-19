@@ -11,7 +11,10 @@ class InputsContainer extends Component {
     render() {
         return (
             <div id='inputsContainer'>
-                <InputBasicInfo info={this.props.BasicsInputsContainer} />
+                <InputBasicInfo
+                    info={this.props.BasicsInputsContainer}
+                    submitChange={this.props.submitChange}
+                />
                 <InputEducation
                     submitChange={this.props.submitChange}
                     removeStateItem={this.props.removeStateItem}

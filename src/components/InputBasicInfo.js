@@ -41,6 +41,14 @@ class InputBasicInfo extends Component {
                     className='input'
                     title='Website'
                 ></input>
+                <div className='submitBtnContainer'>
+                    <input
+                        type='submit'
+                        value='Submit'
+                        id='submitCvBtn'
+                        onClick={this.props.submitChange}
+                    ></input>
+                </div>
             </div>
         );
     }
