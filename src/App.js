@@ -29,6 +29,7 @@ class App extends Component {
         const allInputElements = Array.from(e.target.parentNode.children);
 
         const targetState = [e.target.parentNode.parentNode.parentNode.id];
+        console.log(this.state[targetState]);
         this.state[targetState].forEach((stateItem) => {
             this.setState((state) => {
                 if (stateItem[0] == allInputElements[1].textContent) {
@@ -88,7 +89,8 @@ class App extends Component {
             });
         }
         console.log(allInputElements);
-
+        const targetKey = e.target.id;
+        console.log(targetKey);
         //Add the values of the input to their respective state objects
         //This works, but acts weird when you hit submit again...
         allInputs.forEach((input) => {
@@ -96,9 +98,9 @@ class App extends Component {
                 this.setState((state) => {
                     //Creates a new education object within educationInputsCounter, with educationCounter as the object key
                     if (input.name === 'education') {
-                        return (state.educationInputsContainer[
-                            state.educationCounter
-                        ] = [...educationInputs]);
+                        return (state.educationInputsContainer[targetKey] = [
+                            ...educationInputs,
+                        ]);
                         //Prevents the applicant's name from displaying as, for example, "Name: John Smith"
                     } else if (input.title !== 'Name') {
                         return (state[input.parentNode.id][input.id] =
