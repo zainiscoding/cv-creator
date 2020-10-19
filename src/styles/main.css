@@ -1,0 +1,46 @@
+#root {
+    height: 100vh;
+    width: 100vw;
+}
+
+#App {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+#Inputs {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    place-content: center;
+}
+
+#inputsContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 80%;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.inputArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    align-self: center;
+    text-align: center;
+}
+#CV {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
