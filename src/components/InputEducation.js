@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import InputsContainer from './InputsContainer';
 
-var uniqid = require('uniqid');
-
 class InputEducation extends Component {
     constructor(props) {
         super(props);
@@ -64,7 +62,7 @@ class InputEducation extends Component {
                         ></input>
                         <div id='submitEducationbtnContainer'>
                             <button
-                                id={uniqid()}
+                                id='submitEducationButton'
                                 onClick={this.changeAddEducationState}
                             >
                                 Submit entry
@@ -82,11 +80,11 @@ class InputEducation extends Component {
                 )}
                 <div id='educationInfoContainer'>
                     {this.props.info.educationInputsContainer.map(
-                        (education) => {
+                        (education, index) => {
                             return (
-                                <div>
+                                <div id={index}>
                                     <button
-                                        id={uniqid()}
+                                        id={index}
                                         onClick={this.props.removeStateItem}
                                     >
                                         Delete
