@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 class InputBasicInfo extends Component {
     render() {
         return (
-            <div id='basicInputsContainer'>
-                <h2>Basic Information</h2>
-                <label htmlFor='nameInput'>Name</label>
+            <div id='basicInputsContainer' className='inputArea'>
+                <label htmlFor='nameInput'>Full name</label>
                 <input
                     name='basic'
                     type='text'

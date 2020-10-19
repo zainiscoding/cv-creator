@@ -9,6 +9,7 @@ class DisplayCV extends Component {
                     <div id='name'>
                         <p>{this.props.info.basicInputsContainer.name}</p>
                     </div>
+
                     <div id='email'>
                         <p>{this.props.info.basicInputsContainer.email}</p>
                     </div>
@@ -33,7 +34,7 @@ class DisplayCV extends Component {
                                                 if (
                                                     detail.charAt(
                                                         detail.length - 1
-                                                    ) !== ' '
+                                                    ) !== ''
                                                 ) {
                                                     return (
                                                         <div key={detail}>

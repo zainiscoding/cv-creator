@@ -24,7 +24,7 @@ class InputWorkExperience extends Component {
 
     render() {
         return (
-            <div id='workExperienceInputsContainer'>
+            <div id='workExperienceInputsContainer' className='inputArea'>
                 <h2>Work Experience</h2>
                 {this.state.addingWorkExperience === true && (
                     <>
@@ -60,9 +60,9 @@ class InputWorkExperience extends Component {
                             className='input'
                             title='End Date'
                         ></input>
-                        <div id='submitWorkbtnContainer'>
+                        <div id='submitWorkBtnContainer'>
                             <button
-                                id='submitWorkButton'
+                                id='submitWorkBtn'
                                 onClick={this.changeAddWorkExperienceState}
                             >
                                 Submit entry
@@ -71,12 +71,14 @@ class InputWorkExperience extends Component {
                     </>
                 )}
                 {this.state.addingWorkExperience === false && (
-                    <button
-                        id='addWorkExperienceButton'
-                        onClick={this.changeAddWorkExperienceState}
-                    >
-                        Add entry
-                    </button>
+                    <div id='addWorkExperienceBtnContainer'>
+                        <button
+                            id='addWorkExperienceButton'
+                            onClick={this.changeAddWorkExperienceState}
+                        >
+                            Add entry
+                        </button>
+                    </div>
                 )}
                 <div id='inputAreaWorkInfoContainer'>
                     {this.props.info.workExperienceInputsContainer.map(

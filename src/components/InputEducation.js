@@ -22,7 +22,7 @@ class InputEducation extends Component {
 
     render() {
         return (
-            <div id='educationInputsContainer'>
+            <div id='educationInputsContainer' className='inputArea'>
                 <h2>Education</h2>
                 {this.state.addingEducation === true && (
                     <>
@@ -60,9 +60,9 @@ class InputEducation extends Component {
                             className='input'
                             title='End date'
                         ></input>
-                        <div id='submitEducationbtnContainer'>
+                        <div id='submitEducationBtnContainer'>
                             <button
-                                id='submitEducationButton'
+                                id='submitEducationBtn'
                                 onClick={this.changeAddEducationState}
                             >
                                 Submit entry
@@ -71,12 +71,14 @@ class InputEducation extends Component {
                     </>
                 )}
                 {this.state.addingEducation === false && (
-                    <button
-                        id='addEducationButton'
-                        onClick={this.changeAddEducationState}
-                    >
-                        Add entry
-                    </button>
+                    <div id='addEducationBtnContainer'>
+                        <button
+                            id='addEducationBtn'
+                            onClick={this.changeAddEducationState}
+                        >
+                            Add entry
+                        </button>
+                    </div>
                 )}
                 <div id='inputAreaEducationInfoContainer'>
                     {this.props.info.educationInputsContainer.map(

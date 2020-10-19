@@ -21,14 +21,6 @@ class InputsContainer extends Component {
                     removeStateItem={this.props.removeStateItem}
                     info={this.props.info}
                 />
-                <div className='submitBtnContainer'>
-                    <input
-                        type='submit'
-                        value='Submit'
-                        id='submitCvBtn'
-                        onClick={this.props.submitChange}
-                    ></input>
-                </div>
             </div>
         );
     }
