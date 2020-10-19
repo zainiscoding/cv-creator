@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class InputBasicInfo extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div id='basicInputsContainer'>

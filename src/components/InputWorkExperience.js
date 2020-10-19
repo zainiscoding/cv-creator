@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InputsContainer from './InputsContainer';
+var uniqid = require('uniqid');
 
 class InputWorkExperience extends Component {
     constructor(props) {
@@ -34,6 +34,7 @@ class InputWorkExperience extends Component {
                             type='text'
                             id='jobTitle'
                             className='input'
+                            title='Job Title'
                         ></input>
                         <label htmlFor='courseName'>Company name</label>
                         <input
@@ -41,6 +42,7 @@ class InputWorkExperience extends Component {
                             type='text'
                             id='companyName'
                             className='input'
+                            title='Company Name'
                         ></input>
                         <label htmlFor='startDate'>Start date</label>
                         <input
@@ -48,6 +50,7 @@ class InputWorkExperience extends Component {
                             type='date'
                             id='startDate'
                             className='input'
+                            title='Start Date'
                         ></input>
                         <label htmlFor='endDate'>End date</label>
                         <input
@@ -55,13 +58,16 @@ class InputWorkExperience extends Component {
                             type='date'
                             id='endDate'
                             className='input'
+                            title='End Date'
                         ></input>
-                        <button
-                            id='submitWorkExperienceButton'
-                            onClick={this.changeAddWorkExperienceState}
-                        >
-                            Submit entry
-                        </button>
+                        <div id='submitWorkbtnContainer'>
+                            <button
+                                id='submitWorkButton'
+                                onClick={this.changeAddWorkExperienceState}
+                            >
+                                Submit entry
+                            </button>
+                        </div>
                     </>
                 )}
                 {this.state.addingWorkExperience === false && (
@@ -72,6 +78,39 @@ class InputWorkExperience extends Component {
                         Add entry
                     </button>
                 )}
+                <div id='inputAreaWorkInfoContainer'>
+                    {this.props.info.workExperienceInputsContainer.map(
+                        (work, index) => {
+                            return (
+                                <div
+                                    id={index}
+                                    className='workEntry'
+                                    key={uniqid()}
+                                >
+                                    <button
+                                        id={index}
+                                        onClick={this.props.removeStateItem}
+                                    >
+                                        Delete
+                                    </button>
+                                    {work.map((detail) => {
+                                        if (
+                                            detail.charAt(detail.length - 1) !==
+                                            ' '
+                                        ) {
+                                            return (
+                                                <div key={detail}>
+                                                    <p>{detail}</p>
+                                                </div>
+                                            );
+                                        }
+                                        return '';
+                                    })}
+                                </div>
+                            );
+                        }
+                    )}
+                </div>
             </div>
         );
     }

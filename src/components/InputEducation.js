@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InputsContainer from './InputsContainer';
+var uniqid = require('uniqid');
 
 class InputEducation extends Component {
     constructor(props) {
@@ -78,11 +78,15 @@ class InputEducation extends Component {
                         Add entry
                     </button>
                 )}
-                <div id='educationInfoContainer'>
+                <div id='inputAreaEducationInfoContainer'>
                     {this.props.info.educationInputsContainer.map(
                         (education, index) => {
                             return (
-                                <div id={index}>
+                                <div
+                                    id={index}
+                                    className='educationEntry'
+                                    key={uniqid()}
+                                >
                                     <button
                                         id={index}
                                         onClick={this.props.removeStateItem}
@@ -100,6 +104,7 @@ class InputEducation extends Component {
                                                 </div>
                                             );
                                         }
+                                        return '';
                                     })}
                                 </div>
                             );

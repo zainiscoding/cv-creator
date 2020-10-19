@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
+var uniqid = require('uniqid');
 
 class DisplayCV extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div id='CV'>
@@ -23,25 +21,58 @@ class DisplayCV extends Component {
                         <p>{this.props.info.basicInputsContainer.website}</p>
                     </div>
                 </div>
-                <div id='educationInfoContainer'>
-                    {this.props.info.educationInputsContainer.map(
-                        (education) => {
+                {this.props.info.educationInputsContainer.length !== 0 && (
+                    <div id='educationInfoContainer'>
+                        <h2>Education</h2>
+                        {this.props.info.educationInputsContainer.map(
+                            (education) => {
+                                return (
+                                    <>
+                                        <div key={uniqid()}>
+                                            {education.map((detail) => {
+                                                if (
+                                                    detail.charAt(
+                                                        detail.length - 1
+                                                    ) !== ' '
+                                                ) {
+                                                    return (
+                                                        <div key={detail}>
+                                                            <p>{detail}</p>
+                                                        </div>
+                                                    );
+                                                }
+                                                return '';
+                                            })}
+                                        </div>
+                                    </>
+                                );
+                            }
+                        )}
+                    </div>
+                )}
+                <div id='workInfoContainer'>
+                    {this.props.info.workExperienceInputsContainer.map(
+                        (experience) => {
                             return (
-                                <div>
-                                    <h2>Education</h2>
-                                    {education.map((detail) => {
-                                        if (
-                                            detail.charAt(detail.length - 1) !==
-                                            ' '
-                                        ) {
-                                            return (
-                                                <div key={detail}>
-                                                    <p>{detail}</p>
-                                                </div>
-                                            );
-                                        }
-                                    })}
-                                </div>
+                                <>
+                                    <h2>Work Experience</h2>
+                                    <div key={uniqid()}>
+                                        {experience.map((detail) => {
+                                            if (
+                                                detail.charAt(
+                                                    detail.length - 1
+                                                ) !== ' '
+                                            ) {
+                                                return (
+                                                    <div key={detail}>
+                                                        <p>{detail}</p>
+                                                    </div>
+                                                );
+                                            }
+                                            return '';
+                                        })}
+                                    </div>
+                                </>
                             );
                         }
                     )}

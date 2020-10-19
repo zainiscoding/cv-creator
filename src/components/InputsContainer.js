@@ -4,10 +4,6 @@ import InputEducation from './InputEducation';
 import InputWorkExperience from './InputWorkExperience';
 
 class InputsContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div id='inputsContainer'>
@@ -20,7 +16,11 @@ class InputsContainer extends Component {
                     removeStateItem={this.props.removeStateItem}
                     info={this.props.info}
                 />
-                <InputWorkExperience submitChange={this.props.submitChange} />
+                <InputWorkExperience
+                    submitChange={this.props.submitChange}
+                    removeStateItem={this.props.removeStateItem}
+                    info={this.props.info}
+                />
                 <div className='submitBtnContainer'>
                     <input
                         type='submit'
