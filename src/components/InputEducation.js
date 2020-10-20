@@ -86,15 +86,17 @@ class InputEducation extends Component {
                             return (
                                 <div
                                     id={index}
-                                    className='educationEntry'
+                                    className='entryInputArea'
                                     key={uniqid()}
                                 >
                                     <button
                                         id={index}
                                         onClick={this.props.removeStateItem}
+                                        className='entryDeleteBtn'
                                     >
-                                        Delete
+                                        X
                                     </button>
+                                    <p>Education {index + 1}</p>
                                     {education.map((detail) => {
                                         if (
                                             detail.charAt(detail.length - 1) !==

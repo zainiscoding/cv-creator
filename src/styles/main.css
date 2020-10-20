@@ -10,8 +10,10 @@ h2 {
 #App {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 10%;
     height: 100%;
     width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #Inputs {
@@ -23,7 +25,6 @@ h2 {
     place-content: center;
     align-self: center;
     justify-self: self-end;
-    border: solid 1px #d5d5d5;
 }
 
 #inputsContainer {
@@ -32,13 +33,39 @@ h2 {
     height: 80%;
     width: 100%;
     text-align: center;
-    justify-content: center;
 }
 
 .inputArea {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: space-evenly;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+#inputAreaEducationInfoContainer {
+    width: 50%;
+    align-self: center;
+}
+#inputAreaWorkInfoContainer {
+    width: 50%;
+    align-self: center;
+}
+#basicInputsContainer {
+    border: solid 1px #d5d5d5;
+}
+
+#educationInputsContainer {
+    border-bottom: solid 1px #d5d5d5;
+    border-left: solid 1px #d5d5d5;
+    border-right: solid 1px #d5d5d5;
+}
+
+#workExperienceInputsContainer {
+    border-bottom: solid 1px #d5d5d5;
+    border-left: solid 1px #d5d5d5;
+    border-right: solid 1px #d5d5d5;
 }
 
 .input {
@@ -52,6 +79,21 @@ h2 {
     );
     border: solid 1px #d5d5d5;
     border-radius: 5px;
+}
+
+.entryInputArea {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #d5d5d5;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.entryDeleteBtn {
+    padding: 4px;
+    align-self: flex-end;
+    position: absolute;
 }
 
 button {
@@ -69,7 +111,7 @@ button {
 #CV {
     grid-column: 2;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
     height: 80%;
     width: 70%;
     justify-self: self-start;
