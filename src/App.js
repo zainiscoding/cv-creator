@@ -29,15 +29,31 @@ class App extends Component {
         } else this.setState({ editing: true });
     };
 
+    // removeStateItem = (e) => {
+    //     e.preventDefault();
+    //     const targetId = e.target.id;
+    //     const targetState = e.target.parentNode.parentNode.parentNode.id;
+    //     console.log(targetId);
+    //     this.setState((state) => {
+    //         return state[targetState].splice(targetId, 1);
+    //     });
+    //     console.log(this.state);
+    // };
+
     removeStateItem = (e) => {
         e.preventDefault();
-        const targetId = e.target.id;
+        const targetId = parseInt(e.target.id);
         const targetState = e.target.parentNode.parentNode.parentNode.id;
         console.log(targetId);
+
+        let filteredState = this.state[targetState];
+
+        filteredState = filteredState.filter(
+            (obj) => filteredState.indexOf(obj) !== targetId
+        );
         this.setState((state) => {
-            return state[targetState].splice(targetId, 1);
+            return (state[targetState] = filteredState);
         });
-        console.log(this.state);
     };
 
     submitChange = (e) => {
