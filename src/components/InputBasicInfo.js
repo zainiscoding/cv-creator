@@ -4,6 +4,7 @@ class InputBasicInfo extends Component {
     render() {
         return (
             <div id='basicInputsContainer' className='inputArea'>
+                <h2>Basic Information</h2>
                 <label htmlFor='nameInput'>Full name</label>
                 <input
                     name='basic'
@@ -37,12 +38,13 @@ class InputBasicInfo extends Component {
                     title='Website'
                 ></input>
                 <div className='submitBtnContainer'>
-                    <input
+                    <button
                         type='submit'
-                        value='Submit'
-                        id='submitCvBtn'
+                        id='submitBasicInfoBtn'
                         onClick={this.props.submitChange}
-                    ></input>
+                    >
+                        Submit
+                    </button>
                 </div>
             </div>
         );

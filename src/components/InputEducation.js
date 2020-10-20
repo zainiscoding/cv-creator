@@ -34,7 +34,7 @@ class InputEducation extends Component {
                             type='text'
                             id='institutionName'
                             className='input'
-                            title='Name of Institution'
+                            title=''
                         ></input>
                         <label htmlFor='courseName'>Course name</label>
                         <input
@@ -42,7 +42,7 @@ class InputEducation extends Component {
                             type='text'
                             id='courseName'
                             className='input'
-                            title='Course name'
+                            title=''
                         ></input>
                         <label htmlFor='startDate'>Start date</label>
                         <input

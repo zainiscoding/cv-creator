@@ -3,6 +3,10 @@ import InputsContainer from './components/InputsContainer';
 import DisplayCV from './components/DisplayCV';
 import './styles/reset.css';
 import './styles/main.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 class App extends Component {
     constructor(props) {
@@ -29,10 +33,11 @@ class App extends Component {
         e.preventDefault();
         const targetId = e.target.id;
         const targetState = e.target.parentNode.parentNode.parentNode.id;
+        console.log(targetId);
         this.setState((state) => {
-            console.log(state[targetState].indexOf(targetId));
             return state[targetState].splice(targetId, 1);
         });
+        console.log(this.state);
     };
 
     submitChange = (e) => {
@@ -54,16 +59,30 @@ class App extends Component {
         //Gathers the information from individual education entries and pushes them into an array
         const educationInputs = [];
         allInputs.forEach((input) => {
-            if (input.name === 'education') {
+            if (
+                input.name === 'education' &&
+                input.title !== '' &&
+                input.value.length > 0
+            ) {
                 educationInputs.push(input.title + ': ' + input.value);
+            } else if (input.name === 'education' && input.value.length > 0) {
+                educationInputs.push(input.title + input.value);
             }
         });
-
         //Gathers the information from individual work entires and pushes them into an array
         const workInputs = [];
         allInputs.forEach((input) => {
-            if (input.name === 'workExperience') {
+            if (
+                input.name === 'workExperience' &&
+                input.title !== '' &&
+                input.value.length > 0
+            ) {
                 workInputs.push(input.title + ': ' + input.value);
+            } else if (
+                input.name === 'workExperience' &&
+                input.value.length > 0
+            ) {
+                workInputs.push(input.title + input.value);
             }
         });
 
@@ -97,17 +116,20 @@ class App extends Component {
                     ] = [...workInputs]);
                     //Prevents the applicant's name from displaying as, for example, "Name: John Smith"
                 } else if (input.title !== 'Name' && input.value.length !== 0) {
-                    return (state[input.parentNode.id][input.id] =
-                        input.title + ': ' + input.value);
+                    return (state[input.parentNode.id][input.id] = input.value);
                 } else {
                     return (state[input.parentNode.id][input.id] = input.value);
                 }
             });
         });
+        console.log(this.state);
     };
 
     render() {
         const info = this.state;
+        const email = <FontAwesomeIcon icon={faEnvelope} />;
+        const phone = <FontAwesomeIcon icon={faPhoneAlt} />;
+        const website = <FontAwesomeIcon icon={faExternalLinkAlt} />;
         return (
             <div id='App'>
                 <div id='Inputs'>
@@ -118,7 +140,12 @@ class App extends Component {
                         editing={this.state.editing}
                     />
                 </div>
-                <DisplayCV info={info} />
+                <DisplayCV
+                    info={info}
+                    email={email}
+                    phone={phone}
+                    website={website}
+                />
             </div>
         );
     }

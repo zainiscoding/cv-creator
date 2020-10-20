@@ -6,20 +6,43 @@ class DisplayCV extends Component {
         return (
             <div id='CV'>
                 <div id='basicInfoContainer'>
-                    <div id='name'>
+                    <div id='nameContainer'>
                         <p>{this.props.info.basicInputsContainer.name}</p>
                     </div>
-
-                    <div id='email'>
-                        <p>{this.props.info.basicInputsContainer.email}</p>
-                    </div>
-                    <div id='phoneNumber'>
-                        <p>
-                            {this.props.info.basicInputsContainer.phoneNumber}
-                        </p>
-                    </div>
-                    <div id='website'>
-                        <p>{this.props.info.basicInputsContainer.website}</p>
+                    <div id='basicInfoExtraContainer'>
+                        <div
+                            id='emailContainer'
+                            className='basicInfoExtraContainerItem'
+                        >
+                            {this.props.info.basicInputsContainer.email && (
+                                <>{this.props.email}</>
+                            )}
+                            <p>{this.props.info.basicInputsContainer.email}</p>
+                        </div>
+                        <div
+                            id='phoneNumberContainer'
+                            className='basicInfoExtraContainerItem'
+                        >
+                            {this.props.info.basicInputsContainer
+                                .phoneNumber && <>{this.props.phone}</>}
+                            <p>
+                                {
+                                    this.props.info.basicInputsContainer
+                                        .phoneNumber
+                                }
+                            </p>
+                        </div>
+                        <div
+                            id='websiteContainer'
+                            className='basicInfoExtraContainerItem'
+                        >
+                            {this.props.info.basicInputsContainer.website && (
+                                <>{this.props.website}</>
+                            )}
+                            <p>
+                                {this.props.info.basicInputsContainer.website}
+                            </p>
+                        </div>
                     </div>
                 </div>
                 {this.props.info.educationInputsContainer.length !== 0 && (
@@ -29,21 +52,29 @@ class DisplayCV extends Component {
                             (education) => {
                                 return (
                                     <>
-                                        <div key={uniqid()}>
-                                            {education.map((detail) => {
-                                                if (
-                                                    detail.charAt(
-                                                        detail.length - 1
-                                                    ) !== ''
-                                                ) {
-                                                    return (
-                                                        <div key={detail}>
-                                                            <p>{detail}</p>
-                                                        </div>
-                                                    );
-                                                }
-                                                return '';
-                                            })}
+                                        <div
+                                            className='entryContainer'
+                                            key={uniqid()}
+                                        >
+                                            <div
+                                                key={uniqid()}
+                                                className='entry'
+                                            >
+                                                {education.map((detail) => {
+                                                    if (
+                                                        detail.charAt(
+                                                            detail.length - 1
+                                                        ) !== ''
+                                                    ) {
+                                                        return (
+                                                            <p key={uniqid()}>
+                                                                {detail}
+                                                            </p>
+                                                        );
+                                                    }
+                                                    return '';
+                                                })}
+                                            </div>
                                         </div>
                                     </>
                                 );
@@ -51,33 +82,43 @@ class DisplayCV extends Component {
                         )}
                     </div>
                 )}
-                <div id='workInfoContainer'>
-                    {this.props.info.workExperienceInputsContainer.map(
-                        (experience) => {
-                            return (
-                                <>
-                                    <h2>Work Experience</h2>
-                                    <div key={uniqid()}>
-                                        {experience.map((detail) => {
-                                            if (
-                                                detail.charAt(
-                                                    detail.length - 1
-                                                ) !== ' '
-                                            ) {
-                                                return (
-                                                    <div key={detail}>
-                                                        <p>{detail}</p>
-                                                    </div>
-                                                );
-                                            }
-                                            return '';
-                                        })}
-                                    </div>
-                                </>
-                            );
-                        }
-                    )}
-                </div>
+                {this.props.info.workExperienceInputsContainer.length !== 0 && (
+                    <div id='workExperienceInfoContainer'>
+                        <h2>Work Experience</h2>
+                        {this.props.info.workExperienceInputsContainer.map(
+                            (experience) => {
+                                return (
+                                    <>
+                                        <div
+                                            className='entryContainer'
+                                            key={uniqid()}
+                                        >
+                                            <div
+                                                key={uniqid()}
+                                                className='entry'
+                                            >
+                                                {experience.map((detail) => {
+                                                    if (
+                                                        detail.charAt(
+                                                            detail.length - 1
+                                                        ) !== ''
+                                                    ) {
+                                                        return (
+                                                            <p key={uniqid()}>
+                                                                {detail}
+                                                            </p>
+                                                        );
+                                                    }
+                                                    return '';
+                                                })}
+                                            </div>
+                                        </div>
+                                    </>
+                                );
+                            }
+                        )}
+                    </div>
+                )}
             </div>
         );
     }
