@@ -60,17 +60,40 @@ class DisplayCV extends Component {
                                                 key={uniqid()}
                                                 className='entry'
                                             >
-                                                {education.map((detail) => {
+                                                {education.map((detail, i) => {
                                                     if (
                                                         detail.charAt(
                                                             detail.length - 1
                                                         ) !== ''
                                                     ) {
-                                                        return (
-                                                            <p key={uniqid()}>
-                                                                {detail}
-                                                            </p>
-                                                        );
+                                                        if (i === 0) {
+                                                            return (
+                                                                <div className='entryTitle'>
+                                                                    <p key={i}>
+                                                                        {detail}
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        } else if (i === 1) {
+                                                            return (
+                                                                <div className='entryPlaceName'>
+                                                                    <p key={i}>
+                                                                        {detail}
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        } else if (
+                                                            i === 2 ||
+                                                            i === 3
+                                                        ) {
+                                                            return (
+                                                                <div className='entryDate'>
+                                                                    <p key={i}>
+                                                                        {detail}
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        }
                                                     }
                                                     return '';
                                                 })}
@@ -97,17 +120,40 @@ class DisplayCV extends Component {
                                                 key={uniqid()}
                                                 className='entry'
                                             >
-                                                {experience.map((detail) => {
+                                                {experience.map((detail, i) => {
                                                     if (
                                                         detail.charAt(
                                                             detail.length - 1
                                                         ) !== ''
                                                     ) {
-                                                        return (
-                                                            <p key={uniqid()}>
-                                                                {detail}
-                                                            </p>
-                                                        );
+                                                        if (i === 0) {
+                                                            return (
+                                                                <div className='entryTitle'>
+                                                                    <p key={i}>
+                                                                        {detail}
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        } else if (i === 1) {
+                                                            return (
+                                                                <div className='entryPlaceName'>
+                                                                    <p key={i}>
+                                                                        {detail}
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        } else if (
+                                                            i === 2 ||
+                                                            i === 3
+                                                        ) {
+                                                            return (
+                                                                <div className='entryDate'>
+                                                                    <p key={i}>
+                                                                        {detail}
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        }
                                                     }
                                                     return '';
                                                 })}

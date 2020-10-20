@@ -50,7 +50,7 @@ class InputEducation extends Component {
                             type='date'
                             id='startDate'
                             className='input'
-                            title='Start date'
+                            title='Start'
                         ></input>
                         <label htmlFor='endDate'>End date</label>
                         <input
@@ -58,7 +58,7 @@ class InputEducation extends Component {
                             type='date'
                             id='endDate'
                             className='input'
-                            title='End date'
+                            title='End'
                         ></input>
                         <div id='submitEducationBtnContainer'>
                             <button
@@ -97,19 +97,7 @@ class InputEducation extends Component {
                                         X
                                     </button>
                                     <p>Education {index + 1}</p>
-                                    {education.map((detail) => {
-                                        if (
-                                            detail.charAt(detail.length - 1) !==
-                                            ' '
-                                        ) {
-                                            return (
-                                                <div key={detail}>
-                                                    <p>{detail}</p>
-                                                </div>
-                                            );
-                                        }
-                                        return '';
-                                    })}
+                                    {education[0]}
                                 </div>
                             );
                         }

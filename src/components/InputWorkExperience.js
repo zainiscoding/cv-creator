@@ -28,21 +28,21 @@ class InputWorkExperience extends Component {
                 <h2>Work Experience</h2>
                 {this.state.addingWorkExperience === true && (
                     <>
+                        <label htmlFor='companyName'>Company name</label>
+                        <input
+                            name='workExperience'
+                            type='text'
+                            id='companyName'
+                            className='input'
+                            title=''
+                        ></input>
                         <label htmlFor='jobTitleInput'>Job Title</label>
                         <input
                             name='workExperience'
                             type='text'
                             id='jobTitle'
                             className='input'
-                            title='Job Title'
-                        ></input>
-                        <label htmlFor='courseName'>Company name</label>
-                        <input
-                            name='workExperience'
-                            type='text'
-                            id='companyName'
-                            className='input'
-                            title='Company Name'
+                            title=''
                         ></input>
                         <label htmlFor='startDate'>Start date</label>
                         <input
@@ -50,7 +50,7 @@ class InputWorkExperience extends Component {
                             type='date'
                             id='startDate'
                             className='input'
-                            title='Start Date'
+                            title='Start'
                         ></input>
                         <label htmlFor='endDate'>End date</label>
                         <input
@@ -58,7 +58,7 @@ class InputWorkExperience extends Component {
                             type='date'
                             id='endDate'
                             className='input'
-                            title='End Date'
+                            title='End'
                         ></input>
                         <div id='submitWorkBtnContainer'>
                             <button
@@ -97,19 +97,7 @@ class InputWorkExperience extends Component {
                                         X
                                     </button>
                                     <p>Work {index + 1}</p>
-                                    {work.map((detail) => {
-                                        if (
-                                            detail.charAt(detail.length - 1) !==
-                                            ' '
-                                        ) {
-                                            return (
-                                                <div key={detail}>
-                                                    <p>{detail}</p>
-                                                </div>
-                                            );
-                                        }
-                                        return '';
-                                    })}
+                                    {work[0]}
                                 </div>
                             );
                         }
