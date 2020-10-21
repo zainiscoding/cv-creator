@@ -73,6 +73,15 @@ class InputWorkExperience extends Component {
                                 </button>
                             </div>
                         )}
+                        <div id='cancelAddWorkExperience'>
+                            <button
+                                id='cancelAddWorkExperienceBtn'
+                                className='cancelBtn'
+                                onClick={this.changeAddWorkExperienceState}
+                            >
+                                Cancel
+                            </button>
+                        </div>
                     </>
                 )}
                 {this.state.addingWorkExperience === false && (

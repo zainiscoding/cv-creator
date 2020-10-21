@@ -71,6 +71,15 @@ class InputEducation extends Component {
                                 </button>
                             </div>
                         )}
+                        <div id='cancelAddEducation'>
+                            <button
+                                id='cancelAddEducationBtnBtn'
+                                className='cancelBtn'
+                                onClick={this.changeAddEducationState}
+                            >
+                                Cancel
+                            </button>
+                        </div>
                     </>
                 )}
                 {this.state.addingEducation === false && (
