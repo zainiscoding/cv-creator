@@ -8,18 +8,21 @@ class InputsContainer extends Component {
         return (
             <div id='inputsContainer'>
                 <InputBasicInfo
-                    info={this.props.BasicsInputsContainer}
+                    info={this.props.info}
                     submitChange={this.props.submitChange}
+                    checkEmptyInput={this.props.checkEmptyInput}
                 />
                 <InputEducation
                     submitChange={this.props.submitChange}
                     removeStateItem={this.props.removeStateItem}
                     info={this.props.info}
+                    checkEmptyInput={this.props.checkEmptyInput}
                 />
                 <InputWorkExperience
                     submitChange={this.props.submitChange}
                     removeStateItem={this.props.removeStateItem}
                     info={this.props.info}
+                    checkEmptyInput={this.props.checkEmptyInput}
                 />
             </div>
         );
