@@ -28,13 +28,16 @@ class InputWorkExperience extends Component {
                 <h2>Work Experience</h2>
                 {this.state.addingWorkExperience === true && (
                     <>
-                        <label htmlFor='companyName'>Company name</label>
+                        <label htmlFor='companyName'>
+                            Company name {this.props.requiredText}
+                        </label>
                         <input
                             name='workExperience'
                             type='text'
                             id='companyName'
                             className='input'
                             title=''
+                            onChange={this.props.checkEmptyInput}
                         ></input>
                         <label htmlFor='jobTitleInput'>Job Title</label>
                         <input
@@ -60,14 +63,16 @@ class InputWorkExperience extends Component {
                             className='input'
                             title='End'
                         ></input>
-                        <div id='submitWorkBtnContainer'>
-                            <button
-                                id='submitWorkBtn'
-                                onClick={this.changeAddWorkExperienceState}
-                            >
-                                Submit entry
-                            </button>
-                        </div>
+                        {this.props.info.inputError === false && (
+                            <div id='submitWorkBtnContainer'>
+                                <button
+                                    id='submitWorkBtn'
+                                    onClick={this.changeAddWorkExperienceState}
+                                >
+                                    Submit entry
+                                </button>
+                            </div>
+                        )}
                     </>
                 )}
                 {this.state.addingWorkExperience === false && (

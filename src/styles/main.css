@@ -50,6 +50,11 @@ h2 {
 .textRequired {
     color: #9f4c8b;
 }
+
+.inputFieldError {
+    color: #9f4c8b;
+}
+
 #inputAreaEducationInfoContainer {
     width: 50%;
     align-self: center;

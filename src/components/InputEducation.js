@@ -27,7 +27,7 @@ class InputEducation extends Component {
                 {this.state.addingEducation === true && (
                     <>
                         <label htmlFor='institutionNameInput'>
-                            Institution name
+                            Institution name {this.props.requiredText}
                         </label>
                         <input
                             name='education'
@@ -35,6 +35,7 @@ class InputEducation extends Component {
                             id='institutionName'
                             className='input'
                             title=''
+                            onChange={this.props.checkEmptyInput}
                         ></input>
                         <label htmlFor='courseName'>Course name</label>
                         <input
@@ -60,14 +61,16 @@ class InputEducation extends Component {
                             className='input'
                             title='End'
                         ></input>
-                        <div id='submitEducationBtnContainer'>
-                            <button
-                                id='submitEducationBtn'
-                                onClick={this.changeAddEducationState}
-                            >
-                                Submit entry
-                            </button>
-                        </div>
+                        {this.props.info.inputError === false && (
+                            <div id='submitEducationBtnContainer'>
+                                <button
+                                    id='submitEducationBtn'
+                                    onClick={this.changeAddEducationState}
+                                >
+                                    Submit entry
+                                </button>
+                            </div>
+                        )}
                     </>
                 )}
                 {this.state.addingEducation === false && (

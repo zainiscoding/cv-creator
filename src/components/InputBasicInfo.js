@@ -5,9 +5,12 @@ class InputBasicInfo extends Component {
         super(props);
         this.state = {
             emailError: false,
+            phoneNumberError: false,
             emailEditing: true,
+            phoneNumberEditing: true,
         };
         this.checkEmailInput = this.checkEmailInput.bind(this);
+        this.checkPhoneNumberInput = this.checkPhoneNumberInput.bind(this);
         this.setInputFocus = this.setInputFocus.bind(this);
     }
 
@@ -30,6 +33,22 @@ class InputBasicInfo extends Component {
                 this.unsetInputFocus(e)
             );
         } else return this.setState({ emailError: true });
+    };
+
+    checkPhoneNumberInput = (e) => {
+        this.setInputFocus(e);
+
+        const numberTest = /^\d{10}$/;
+        if (e.target.value.match(numberTest)) {
+            return this.setState(
+                { phoneNumberError: false },
+                this.unsetInputFocus(e)
+            );
+        } else if (e.target.value.length === 0) {
+            return this.setState({ phoneNumberError: false });
+        } else {
+            return this.setState({ phoneNumberError: true });
+        }
     };
 
     render() {
@@ -68,12 +87,21 @@ class InputBasicInfo extends Component {
                     onBlur={this.unsetInputFocus}
                 ></input>
                 <label htmlFor='phoneNumber'>Phone number</label>
+                {this.state.phoneNumberError === true &&
+                    this.state.phoneNumberEditing === true && (
+                        <div className='inputErrorContainer'>
+                            <p className='inputFieldError'>
+                                Enter a valid phone number!
+                            </p>
+                        </div>
+                    )}
                 <input
                     name='basic'
-                    type='number'
+                    type='text'
                     id='phoneNumber'
                     className='input'
                     title='Phone'
+                    onChange={this.checkPhoneNumberInput}
                 ></input>
                 <label htmlFor='website'>Website</label>
                 <input
@@ -85,7 +113,8 @@ class InputBasicInfo extends Component {
                 ></input>
                 {this.props.info.inputError === false &&
                     this.state.emailEditing === false &&
-                    this.state.emailError === false && (
+                    this.state.emailError === false &&
+                    this.state.phoneNumberError === false && (
                         <div className='submitBtnContainer'>
                             <button
                                 type='submit'
