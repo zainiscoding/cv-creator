@@ -5,35 +5,40 @@ class InputBasicInfo extends Component {
         super(props);
         this.state = {
             emailError: false,
-            editingEmail: false,
+            emailEditing: true,
         };
         this.checkEmailInput = this.checkEmailInput.bind(this);
-        this.setEmailFocus = this.setEmailFocus.bind(this);
+        this.setInputFocus = this.setInputFocus.bind(this);
     }
 
-    setEmailFocus = () => {
-        return this.setState({ editingEmail: true });
+    //change Email to e.value.... id, so you can use it on anything!
+
+    setInputFocus = (e) => {
+        return this.setState({ [e.target.id + 'Editing']: true });
+    };
+
+    unsetInputFocus = (e) => {
+        return this.setState({ [e.target.id + 'Editing']: false });
     };
 
     checkEmailInput = (e) => {
-        this.setEmailFocus();
+        this.setInputFocus(e);
         const emailTest = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        if (e.target.value.match(emailTest) && e.target.value.length > 0) {
-            return this.setState({ emailError: false });
-        } else if (e.target.value.length === 0) {
-            return (
-                this.setState({ editingEmail: false }),
-                this.setState({ emailError: true })
+        if (e.target.value.match(emailTest)) {
+            return this.setState(
+                { emailError: false },
+                this.unsetInputFocus(e)
             );
-        }
-        console.log(this.state);
+        } else return this.setState({ emailError: true });
     };
 
     render() {
         return (
             <div id='basicInputsContainer' className='inputArea'>
                 <h2>Basic Information</h2>
-                <label htmlFor='nameInput'>Full name (Required)</label>
+                <label htmlFor='nameInput'>
+                    Full name {this.props.requiredText}
+                </label>
                 <input
                     name='basic'
                     type='text'
@@ -42,9 +47,11 @@ class InputBasicInfo extends Component {
                     title='Name'
                     onChange={this.props.checkEmptyInput}
                 ></input>
-                <label htmlFor='email'>Email address (Required)</label>
+                <label htmlFor='email'>
+                    Email address {this.props.requiredText}
+                </label>
                 {this.state.emailError === true &&
-                    this.state.editingEmail === true && (
+                    this.state.emailEditing === true && (
                         <div className='inputErrorContainer'>
                             <p className='inputFieldError'>
                                 Enter a valid email address!
@@ -58,6 +65,7 @@ class InputBasicInfo extends Component {
                     className='input'
                     title='Email'
                     onChange={this.checkEmailInput}
+                    onBlur={this.unsetInputFocus}
                 ></input>
                 <label htmlFor='phoneNumber'>Phone number</label>
                 <input
@@ -76,7 +84,7 @@ class InputBasicInfo extends Component {
                     title='Website'
                 ></input>
                 {this.props.info.inputError === false &&
-                    this.state.editingEmail === true &&
+                    this.state.emailEditing === false &&
                     this.state.emailError === false && (
                         <div className='submitBtnContainer'>
                             <button

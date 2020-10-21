@@ -47,6 +47,9 @@ h2 {
     background: #bdceff;
 }
 
+.textRequired {
+    color: #9f4c8b;
+}
 #inputAreaEducationInfoContainer {
     width: 50%;
     align-self: center;
