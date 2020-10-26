@@ -17,7 +17,7 @@
         "style-loader": "^2.0.0",
         "uniqid": "^5.2.0"
     },
-    "homepage": "https://zainiscoding.github.io/cv-project/",
+    "homepage": "https://zainiscoding.github.io/cv-creator/",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
