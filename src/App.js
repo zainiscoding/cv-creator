@@ -1,54 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import InputsContainer from './components/InputsContainer';
 import DisplayCv from './components/DisplayCv';
 import './styles/reset.css';
 import './styles/main.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      educationCounter: -1,
-      workCounter: -1,
-      inputError: true,
-      basicInputsContainer: {},
-      educationInputsContainer: [],
-      workExperienceInputsContainer: [],
-    };
-    this.submitChange = this.submitChange.bind(this);
-    this.removeStateItem = this.removeStateItem.bind(this);
-    this.checkEmptyInput = this.checkEmptyInput.bind(this);
-  }
+const App = () => {
+  const [educationCounter, setEducationCounter] = useState(-1);
+  const [workCounter, setWorkCounter] = useState(-1);
+  const [inputError, setInputError] = useState(true);
+  const [basicInfo, setBasicInfo] = useState({});
+  const [educationInfo, setEducationInfo] = useState([]);
+  const [workInfo, setWorkInfo] = useState([]);
 
   //Checks for an empty input and reflects it in the state. Used to prevent submission
-  checkEmptyInput = (e) => {
+  function checkEmptyInput(e) {
     if (e.target.value.length === 0) {
-      return this.setState({ inputError: true });
+      return setInputError(true);
     } else if (e.target.value.length > 0) {
-      return this.setState({ inputError: false });
+      return setInputError(false);
     }
-  };
+    console.log(inputError);
+  }
 
   //Remove an entry from the state
-  removeStateItem = (e) => {
+  function removeStateItem(e) {
     e.preventDefault();
     const targetId = parseInt(e.target.id);
     const targetState = e.target.parentNode.parentNode.parentNode.id;
 
-    let filteredState = this.state[targetState];
+    if (targetState === 'educationInputsContainer') {
+      setEducationInfo(
+        educationInfo.filter((obj) => educationInfo.indexOf(obj) !== targetId)
+      );
+    } else if (targetState === 'workInputsContainer') {
+      setWorkInfo(workInfo.filter((obj) => workInfo.indexOf(obj) !== targetId));
+    }
+  }
 
-    filteredState = filteredState.filter(
-      (obj) => filteredState.indexOf(obj) !== targetId
-    );
-    this.setState((state) => {
-      return (state[targetState] = filteredState);
-    });
-  };
-
-  submitChange = (e) => {
+  function submitChange(e) {
     e.preventDefault();
 
-    if (this.state.inputError === false) {
+    if (inputError === false) {
       const allInputElements = Array.from(
         e.target.parentNode.parentNode.children
       );
@@ -73,6 +65,7 @@ class App extends Component {
           educationInputs.push(input.title + input.value);
         }
       });
+
       //Gathers the information from individual work entires and pushes them into an array
       const workInputs = [];
       allInputs.forEach((input) => {
@@ -89,59 +82,50 @@ class App extends Component {
 
       //Increase the education counter when submitting an education entry
       if (e.target.id === 'submitEducationBtn') {
-        this.setState((state) => {
-          return { educationCounter: state.educationCounter + 1 };
-        });
+        setEducationCounter(educationCounter + 1);
       }
 
       //Increase the work counter when submitting a work entry
       if (e.target.id === 'submitWorkBtn') {
-        this.setState((state) => {
-          return { workCounter: state.workCounter + 1 };
-        });
+        setWorkCounter(workCounter + 1);
       }
 
-      //Add the values of the input to their respective state objects
-      //This works, but acts weird when you hit submit again...
+      //Looks at all the inputs and sets their respective states to their values
       allInputs.forEach((input) => {
-        this.setState((state) => {
-          //Creates a new education object within educationInputsCounter, with educationCounter as the object key
-          if (input.name === 'education') {
-            return (state.educationInputsContainer[state.educationCounter] = [
-              ...educationInputs,
-            ]);
-            //Same as above but for work entries
-          } else if (input.name === 'workExperience') {
-            return (state.workExperienceInputsContainer[state.workCounter] = [
-              ...workInputs,
-            ]);
-            //Prevents the applicant's name from displaying as, for example, "Name: John Smith"
-          } else if (input.title !== 'Name' && input.value.length !== 0) {
-            return (state[input.parentNode.id][input.id] = input.value);
-          } else {
-            return (state[input.parentNode.id][input.id] = input.value);
-          }
-        });
+        if (input.name === 'education') {
+          return setEducationInfo([...educationInfo, [...educationInputs]]);
+        } else if (input.name === 'workExperience') {
+          setWorkInfo([...workInfo, [...workInputs]]);
+        } else {
+          return setBasicInfo((prevState) => ({
+            ...prevState,
+            [input.id]: input.value,
+          }));
+        }
       });
     }
-  };
-
-  render() {
-    const info = this.state;
-    return (
-      <div id='App'>
-        <div id='Inputs'>
-          <InputsContainer
-            submitChange={this.submitChange}
-            removeStateItem={this.removeStateItem}
-            checkEmptyInput={this.checkEmptyInput}
-            info={info}
-          />
-        </div>
-        <DisplayCv info={info} />
-      </div>
-    );
   }
-}
+
+  return (
+    <div id='App'>
+      <div id='Inputs'>
+        <InputsContainer
+          submitChange={submitChange}
+          removeStateItem={removeStateItem}
+          checkEmptyInput={checkEmptyInput}
+          basicInfo={basicInfo}
+          educationInfo={educationInfo}
+          workInfo={workInfo}
+          inputError={inputError}
+        />
+      </div>
+      <DisplayCv
+        basicInfo={basicInfo}
+        educationInfo={educationInfo}
+        workInfo={workInfo}
+      />
+    </div>
+  );
+};
 
 export default App;
