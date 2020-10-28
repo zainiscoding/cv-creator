@@ -1,49 +1,47 @@
 import React, { useState } from 'react';
 var uniqid = require('uniqid');
 
-const InputEducation = (props) => {
-  const [addingEducation, setAddingEducation] = useState(false);
+const InputWorkExperience = (props) => {
+  const [addingWorkExperience, setAddingWorkExperience] = useState(false);
 
   //Used to submit or cancel entering an entry
-  function changeAddEducationState(e) {
-    if (addingEducation === true) {
+  function changeAddWorkExperienceState(e) {
+    if (addingWorkExperience === true) {
       props.submitChange(e);
     }
     //When you combine these two if statements into one, the 'Submit education' button always shows. Idk why!
-    if (addingEducation === true) {
-      setAddingEducation(false);
+    if (addingWorkExperience === true) {
+      setAddingWorkExperience(false);
     } else {
-      setAddingEducation(true);
+      setAddingWorkExperience(true);
     }
   }
 
   return (
-    <div id='educationInputsContainer' className='inputArea'>
-      <h2>Education</h2>
-      {addingEducation === true && (
+    <div id='workInputsContainer' className='inputArea'>
+      <h2>Work Experience</h2>
+      {addingWorkExperience === true && (
         <>
-          <label htmlFor='institutionNameInput'>
-            Institution name {props.requiredText}
-          </label>
+          <label htmlFor='companyName'>Company name {props.requiredText}</label>
           <input
-            name='education'
+            name='workExperience'
             type='text'
-            id='institutionName'
+            id='companyName'
             className='input'
             title=''
             onChange={props.checkEmptyInput}
           ></input>
-          <label htmlFor='courseName'>Course name</label>
+          <label htmlFor='jobTitleInput'>Job Title</label>
           <input
-            name='education'
+            name='workExperience'
             type='text'
-            id='courseName'
+            id='jobTitle'
             className='input'
             title=''
           ></input>
           <label htmlFor='startDate'>Start date</label>
           <input
-            name='education'
+            name='workExperience'
             type='date'
             id='startDate'
             className='input'
@@ -51,39 +49,42 @@ const InputEducation = (props) => {
           ></input>
           <label htmlFor='endDate'>End date</label>
           <input
-            name='education'
+            name='workExperience'
             type='date'
             id='endDate'
             className='input'
             title='End'
           ></input>
           {props.inputError === false && (
-            <div id='submitEducationBtnContainer'>
-              <button id='submitEducationBtn' onClick={changeAddEducationState}>
+            <div id='submitWorkBtnContainer'>
+              <button id='submitWorkBtn' onClick={changeAddWorkExperienceState}>
                 Submit entry
               </button>
             </div>
           )}
-          <div id='cancelAddEducation'>
+          <div id='cancelAddWorkExperience'>
             <button
-              id='cancelAddEducationBtnBtn'
+              id='cancelAddWorkExperienceBtn'
               className='cancelBtn'
-              onClick={changeAddEducationState}
+              onClick={changeAddWorkExperienceState}
             >
               Cancel
             </button>
           </div>
         </>
       )}
-      {addingEducation === false && (
-        <div id='addEducationBtnContainer'>
-          <button id='addEducationBtn' onClick={changeAddEducationState}>
+      {addingWorkExperience === false && (
+        <div id='addWorkExperienceBtnContainer'>
+          <button
+            id='addWorkExperienceButton'
+            onClick={changeAddWorkExperienceState}
+          >
             Add entry
           </button>
         </div>
       )}
-      <div id='inputAreaEducationInfoContainer'>
-        {props.educationInfo.map((education, index) => {
+      <div id='inputAreaWorkInfoContainer'>
+        {props.workInfo.map((work, index) => {
           return (
             <div id={index} className='entryInputArea' key={uniqid()}>
               <button
@@ -93,8 +94,8 @@ const InputEducation = (props) => {
               >
                 X
               </button>
-              <p>Education {index + 1}</p>
-              {education[0]}
+              <p>Work {index + 1}</p>
+              {work[0]}
             </div>
           );
         })}
@@ -103,4 +104,4 @@ const InputEducation = (props) => {
   );
 };
 
-export default InputEducation;
+export default InputWorkExperience;

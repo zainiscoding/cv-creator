@@ -1,242 +1,242 @@
 html {
-    background: #4c629f;
+  background: #4c629f;
 }
 
 h2 {
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 #root {
-    height: 100vh;
-    width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 
 #App {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10%;
-    height: 100%;
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #4c629f;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10%;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #4c629f;
 }
 
 #Inputs {
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    height: 80%;
-    width: 70%;
-    place-content: center;
-    align-self: center;
-    justify-self: self-end;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 70%;
+  place-content: center;
+  align-self: center;
+  justify-self: self-end;
 }
 
 #inputsContainer {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    height: 80%;
-    width: 100%;
-    text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 80%;
+  width: 100%;
+  text-align: center;
 }
 
 .inputArea {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-bottom: 5%;
-    padding-top: 5%;
-    background: #bdceff;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  background: #bdceff;
 }
 
 .textRequired {
-    color: #9f4c8b;
+  color: #9f4c8b;
 }
 
 .inputFieldError {
-    color: #9f4c8b;
+  color: #9f4c8b;
 }
 
 #inputAreaEducationInfoContainer {
-    width: 50%;
-    align-self: center;
+  width: 50%;
+  align-self: center;
 }
 #inputAreaWorkInfoContainer {
-    width: 50%;
-    align-self: center;
+  width: 50%;
+  align-self: center;
 }
 #basicInputsContainer {
-    border: solid 1px #2f3440;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+  border: solid 1px #2f3440;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 #educationInputsContainer {
-    border-bottom: solid 1px #2f3440;
-    border-left: solid 1px #2f3440;
-    border-right: solid 1px #2f3440;
+  border-bottom: solid 1px #2f3440;
+  border-left: solid 1px #2f3440;
+  border-right: solid 1px #2f3440;
 }
 
 #workExperienceInputsContainer {
-    border-bottom: solid 1px #2f3440;
-    border-left: solid 1px #2f3440;
-    border-right: solid 1px #2f3440;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+  border-bottom: solid 1px #2f3440;
+  border-left: solid 1px #2f3440;
+  border-right: solid 1px #2f3440;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .input {
-    align-self: center;
-    text-align: center;
-    background: #f1f4ff;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 5px;
+  align-self: center;
+  text-align: center;
+  background: #f1f4ff;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .entryInputArea {
-    display: flex;
-    flex-direction: column;
-    -webkit-box-shadow: 10px 10px 23px -10px rgba(47, 52, 64, 1);
-    -moz-box-shadow: 10px 10px 23px -10px rgba(47, 52, 64, 1);
-    box-shadow: 10px 10px 23px -10px rgba(47, 52, 64, 1);
-    border-radius: 5px;
-    padding: 5px;
-    margin-top: 10px;
-    background: #ccd9ff;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 10px 10px 23px -10px rgba(47, 52, 64, 1);
+  -moz-box-shadow: 10px 10px 23px -10px rgba(47, 52, 64, 1);
+  box-shadow: 10px 10px 23px -10px rgba(47, 52, 64, 1);
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  background: #ccd9ff;
 }
 
 .cancelBtn {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .entryDeleteBtn {
-    padding: 4px;
-    align-self: flex-end;
-    position: absolute;
+  padding: 4px;
+  align-self: flex-end;
+  position: absolute;
 }
 
 button {
-    background: #d5e0ff;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  background: #d5e0ff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #CV {
-    grid-column: 2;
-    display: grid;
-    grid-template-rows: 1fr 2fr 2fr;
-    height: 80%;
-    width: 70%;
-    justify-self: self-start;
-    align-self: center;
-    border: solid 1px #d5d5d5;
-    background: white;
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 1fr 2fr 2fr;
+  height: 80%;
+  width: 70%;
+  justify-self: self-start;
+  align-self: center;
+  border: solid 1px #d5d5d5;
+  background: white;
 }
 
 #basicInfoContainer {
-    grid-row: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 80%;
-    width: 90%;
-    align-self: center;
-    align-items: center;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 80%;
+  width: 90%;
+  align-self: center;
+  align-items: center;
 }
 
 #nameContainer {
-    font-size: 30px;
-    margin-bottom: 10px;
-    grid-column: 1;
-    text-align: center;
-    font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 10px;
+  grid-column: 1;
+  text-align: center;
+  font-weight: bold;
 }
 
 #basicInfoExtraContainer {
-    grid-column: 2;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    height: 50%;
-    place-content: space-evenly;
-    align-items: flex-end;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+  place-content: space-evenly;
+  align-items: flex-end;
 }
 
 .basicInfoExtraContainerItem {
-    display: flex;
-    width: 200px;
+  display: flex;
+  width: 200px;
 }
 
 svg {
-    margin-right: 5%;
+  margin-right: 5%;
 }
 
 #emailContainer {
-    grid-row: 1;
-    grid-column: 2;
+  grid-row: 1;
+  grid-column: 2;
 }
 
 #phoneNumberContainer {
-    grid-row: 2;
-    grid-column: 3;
+  grid-row: 2;
+  grid-column: 3;
 }
 
 #websiteContainer {
-    grid-row: 3;
-    grid-column: 3;
+  grid-row: 3;
+  grid-column: 3;
 }
 
 #educationInfoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 25px;
-    width: 100%;
-    border-top: solid 1px #d5d5d5;
-    padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  width: 100%;
+  border-top: solid 1px #d5d5d5;
+  padding-top: 15px;
 }
 
 .entryContainer {
-    padding-top: 15px;
-    width: 90%;
+  padding-top: 15px;
+  width: 90%;
 }
 
 .entry {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    flex-direction: column;
-    font-size: 17px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: column;
+  font-size: 17px;
 }
 
 .entryTitle {
-    display: flex;
-    font-weight: bold;
-    font-size: 19px;
-    grid-row: 1;
+  display: flex;
+  font-weight: bold;
+  font-size: 19px;
+  grid-row: 1;
 }
 
 .entryPlaceName {
-    display: flex;
-    grid-row: 2;
+  display: flex;
+  grid-row: 2;
 }
 
 .entryDate {
-    display: flex;
-    justify-self: end;
+  display: flex;
+  justify-self: end;
 }
 
-#workExperienceInfoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 25px;
-    width: 100%;
-    border-top: solid 1px #d5d5d5;
-    padding-top: 15px;
+#workInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  width: 100%;
+  border-top: solid 1px #d5d5d5;
+  padding-top: 15px;
 }
